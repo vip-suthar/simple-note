@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./toolbar_style.css">
+    <link rel="stylesheet" href="./editor_inner.css">
+</head>
+<body>
+
+    <div id="editor">
+        <div>
+        <div class="dropdown">
+            <span class="dropbtn">File</span>
+            <div id="myDropdown" class="dropdown-content">
+                <span>Recent Files</span>
+                <span id="newFile">New</span>
+                <span id="openFile">Open</span>
+                <span id="saveFile">Save</span>
+                <span id="exportFile">Export</span>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="tools">
+            <span id="format" data-action="bold"><i class="fas fa-bold"></i></span>
+            <span id="format" data-action="italic"><i class="fas fa-italic"></i></span>
+            <span id="format" data-action="underline"><i class="fas fa-underline"></i></span>
+            <span id="format" data-action="strikeThrough"><i class="fas fa-strikethrough"></i></span>
+            <span id="format" data-action="insertUnorderedList"><i class="fas fa-list-ul"></i></span>
+            <span id="format" data-action="insertOrderedList"><i class="fas fa-list-ol"></i></span>
+            <span id="format" data-action="subscript"><i class="fas fa-subscript"></i></span>
+            <span id="format" data-action="superscript"><i class="fas fa-superscript"></i></span>
+            <span id="formatWithArg" data-action="createLink" data-value="href"><i class="fas fa-link"></i></span>
+            <input type="text" id="link_addr" placeholder="Type or Paste your link here">
+            <span id="formatWithArg" data-action="foreColor" data-value="color">A</span>
+            <span id="formatWithArg"  data-action="hiliteColor" data-value="color">A</span>
+            <input id="colorPicker" type="color" hidden>
+            <select id="formatWithArg" data-action="formatBlock" data-value="insertBlock">
+                <option id="none" value="">Insert...</option>
+                <optgroup title="Headings">
+                    <option value="h1">Title 1</option>
+                    <option value="h2">Title 2</option>
+                    <option value="h3">Subheading 1</option>
+                    <option value="h4">Subheading 2</option>
+                    <option value="h5">Subheading 3</option>
+                </optgroup>
+                <option value="p">paragraph</option>
+                <option value="pre">Code Block</option>
+            </select>
+            <span id="formatWithArg" data-action="insertImage" data-value="image"><i class="far fa-image"></i></span>
+            <input id="filePicker" type="file" accept="image/*">
+          </div>
+
+
+          
+          <div class="tabContainer">
+            <div class="tab">
+            <span class="tablink active" data-attachedTab="tab_00">Untitled1.sde &nbsp;<a class="closeTab">&times;</a></span>
+          </div>
+          
+          <!-- Tab content -->
+          <div id="tab_00" class="tabcontent active">
+            <div class="textarea" contenteditable="true" >Put your Note Here tab_00</div>
+          </div>
+          </div>
+          
+
+          <!-- <button id="addNote">Add</button> -->
+        </div>
+
+    <script src="./navTabs.js"></script>
+    <script src="./actionFile.js"></script>
+    <script src="./tooltip.js"></script>
+    <script src="./actionClick.js"></script>
+</body>
+</html>
