@@ -83,14 +83,34 @@ const json_domFunctions = {
         let addNoteIcon = document.getElementById('addNoteIcon');
         addNoteIcon.innerHTML = main_html;
     },
+    'recentFiles':function () {
+        json_fs['recent']();
+    },
     'newFile': function () {
         json_fs['new']();
     },
     'openFile': function () {
         json_fs['open']();
     },
+    'loadFile':function () {
+        json_fs['load']();
+    },
+    'saveFile':function () {
+        json_fs['save']();  
+    },
     'exportFile':function () {
         json_fs['export']();
+    },
+    'getFileFromLS':function (e) {
+        let activeTextarea = document.querySelector('.tabcontent.active>.textarea');
+        console.log(e.target.innerText.trim())
+        let data = window.localStorage.getItem(e.target.innerText.trim());
+        for (const key in data) {
+            console.log(Object.values(data[key]))
+            activeTextarea.innerHTML += JSON.stringify(data[key])
+        }
+        
+        
     },
     'tablink':function (e) {
         setActiveTab(e.target);
@@ -98,8 +118,8 @@ const json_domFunctions = {
     'closeTab':function(e) {
         removeTab(e);
     },
-    'dropbtn': ()=>{
-        myFunction();
+    'dropbtn': (e)=>{
+        myFunction(e)
     }
 }
 const json_helperFunctions = {
@@ -148,7 +168,6 @@ const json_helperFunctions = {
     },
     'saveToLocalStorage': function (id, value, type) {
         let val;
-        console.log(value, id);
         // else if(type == 'override') {
 
         // }
@@ -159,17 +178,19 @@ const json_helperFunctions = {
                 val.push(value);
                 console.log(val)
             } else val = value;
-            console.log(val);
+            // console.log(val);
             window.localStorage.setItem(`${id}`, val)
-            console.log(window.localStorage.getItem([`${id}`]));
+            // console.log(window.localStorage.getItem([`${id}`]));
         }
     },
-    'uniqueId': function (length) {
+    'uniqueId': function (length, chkUnqIn) {
         let uniqueID = '';
+        length = Math.min(12,length);
         do {
-            uniqueID = Math.random().toString(36).slice(- Math.min(8,length));
-        } while (json_static['tabId'].includes(uniqueID));
-        json_static['tabId'].push(uniqueID);
+            let rand = Math.random()*Number.MAX_SAFE_INTEGER;
+            uniqueID = rand.toString(36).slice(- length).padStart(length, '0');
+        } while (json_static[chkUnqIn].includes(uniqueID));
+        json_static[chkUnqIn].push(uniqueID);
         return uniqueID;
     },
     'exportFile': async function (contents, options){
@@ -183,7 +204,9 @@ const json_helperFunctions = {
     }
 }
 const json_static = {
-    'tabId': ["00"]
+    'tabId': ["00"],
+    'fileId':[],
+    'recent':[]
 }
 
 const main_html = `<div id="editor">

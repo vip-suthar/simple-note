@@ -13,37 +13,72 @@
 <body>
 
     <div id="editor">
-        <div>
-        <div class="dropdown">
-            <span class="dropbtn">File</span>
-            <div id="myDropdown" class="dropdown-content">
-                <span>Recent Files</span>
+        <div id="menubar">
+        <div class="dropdown menuItem">
+            <span class="dropbtn menuItem">File</span>
+            <div  class="dropdown-content direct">
+                <div class="dropdown">
+                    <span id="recentFiles" class="dropbtn">Recent Files <a class="arrow">&#10148;</a></span>
+                    <div class="dropdown-content inner">
+                        
+                    </div>
+                </div>
+                
                 <span id="newFile">New</span>
+                <span id="loadFile">Load from LS</span>
                 <span id="openFile">Open</span>
                 <span id="saveFile">Save</span>
                 <span id="exportFile">Export</span>
+            </div>
+        </div>
+        <div class="dropdown menuItem">
+            <span class="dropbtn menuItem">Edit</span>
+            <div class="dropdown-content">
+                <span>Under Construction</span>
+                
+            </div>
+        </div>
+        <div class="dropdown menuItem">
+            <span class="dropbtn menuItem">Insert</span>
+            <div class="dropdown-content">
+                <span>Under Construction</span>
             </div>
         </div>
     </div>
 
 
         <div id="tools">
+            <span id="format" data-action="undo"><b>&#8617;</b></span>
+            <span id="format" data-action="redo"><b>&#8618;</b></span>
+            <a class="toolSeparator">|</a>
             <span id="format" data-action="bold"><i class="fas fa-bold"></i></span>
             <span id="format" data-action="italic"><i class="fas fa-italic"></i></span>
             <span id="format" data-action="underline"><i class="fas fa-underline"></i></span>
             <span id="format" data-action="strikeThrough"><i class="fas fa-strikethrough"></i></span>
-            <span id="format" data-action="insertUnorderedList"><i class="fas fa-list-ul"></i></span>
-            <span id="format" data-action="insertOrderedList"><i class="fas fa-list-ol"></i></span>
             <span id="format" data-action="subscript"><i class="fas fa-subscript"></i></span>
             <span id="format" data-action="superscript"><i class="fas fa-superscript"></i></span>
-            <span id="formatWithArg" data-action="createLink" data-value="href"><i class="fas fa-link"></i></span>
-            <input type="text" id="link_addr" placeholder="Type or Paste your link here">
             <span id="formatWithArg" data-action="foreColor" data-value="color">A</span>
             <span id="formatWithArg"  data-action="hiliteColor" data-value="color">A</span>
+            <a class="toolSeparator">|</a>
+            <span>
+                <span id="format" data-action="justifyLeft"><i class="fas fa-align-left"></i></span>
+                <span id="format" data-action="justifyCenter"><i class="fas fa-align-center"></i></span>
+                <span id="format" data-action="justifyRight"><i class="fas fa-align-right"></i></span>
+                <span id="format" data-action="justifyFull"><i class="fas fa-align-justify"></i></span>
+            </span>
+            <a class="toolSeparator">|</a>
+            
+            <span id="format" data-action="insertUnorderedList"><i class="fas fa-list-ul"></i></span>
+            <span id="format" data-action="insertOrderedList"><i class="fas fa-list-ol"></i></span>
+            <span id="format" data-action=""><i class="far fa-laugh"></i></span>
+            
+            <span id="formatWithArg" data-action="createLink" data-value="href"><i class="fas fa-link"></i></span>
+            <input type="text" id="link_addr" placeholder="Type or Paste your link here" hidden>
+            
             <input id="colorPicker" type="color" hidden>
             <select id="formatWithArg" data-action="formatBlock" data-value="insertBlock">
                 <option id="none" value="">Insert...</option>
-                <optgroup title="Headings">
+                <optgroup label="Headings">
                     <option value="h1">Title 1</option>
                     <option value="h2">Title 2</option>
                     <option value="h3">Subheading 1</option>
@@ -61,12 +96,13 @@
           
           <div class="tabContainer">
             <div class="tab">
-            <span class="tablink active" data-attachedTab="tab_00">Untitled1.sde &nbsp;<a class="closeTab">&times;</a></span>
+            <span class="tablink active" data-attachedTab="tab_00">Untitled1.dse &nbsp;<a class="closeTab">&times;</a></span>
           </div>
           
           <!-- Tab content -->
           <div id="tab_00" class="tabcontent active">
-            <div class="textarea" contenteditable="true" >Put your Note Here tab_00</div>
+              <!-- <div class="fileNavPanel">jsfvsdg</div> -->
+            <div class="textarea" contenteditable="true">Put your Note Here tab_00</div>
           </div>
           </div>
           

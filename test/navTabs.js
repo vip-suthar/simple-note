@@ -1,6 +1,7 @@
-function myFunction() {
-   document.getElementById("myDropdown").classList.toggle("show");
- }
+function myFunction(e) {
+   if(e) console.log(e.target.nextElementSibling.classList.toggle("show"));
+  
+}
 
  function setActiveTab(elem) {
    var  tabcontent, tablinks,

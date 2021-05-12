@@ -1,13 +1,22 @@
 const json_fs = {
     'recent':function () {
-        
+        let container = document.getElementById('recentFiles').nextElementSibling;
+        container.innerHTML = ''
+        for (const key in json_static['recent']) {
+            let elem = document.createElement('span');
+            elem.classList.add('getFileFromLS');
+            console.log(json_static['recent'][key])
+            elem.innerHTML = json_static['recent'][key];
+            container.appendChild(elem)
+            //let value = window.localStorage.getItem(json_static['recent'][key])
+        }
     },
     'new':function () {
-        let tabId = `tab_${json_helperFunctions['uniqueId'](2)}`
+        let tabId = `tab_${json_helperFunctions['uniqueId'](2, 'tabId')}`
         let tabLink = document.createElement('span');
         tabLink.classList.add('tablink');
         tabLink.setAttribute('data-attachedTab',tabId);
-        tabLink.innerHTML = `Untitled${json_static['tabId'].length}.sde &nbsp;<a class="closeTab">&times;</a>`;
+        tabLink.innerHTML = `Untitled${json_static['tabId'].length}.dse &nbsp;<a class="closeTab">&times;</a>`;
         document.querySelector('.tabContainer>.tab').appendChild(tabLink);
         let tabcontent = document.createElement('div');
         tabcontent.id = tabId;
@@ -26,8 +35,16 @@ const json_fs = {
     else activeTextarea.innerHTML = result;
     myFunction()
     },
-    'save':function () {
+    'load':function () {
         
+    },
+    'save':function () {
+        let editor = document.querySelector('.tabcontent.active>.textarea');
+        let uniqueID = json_helperFunctions['uniqueId'](12, 'fileId');
+        let noteVal = json_helperFunctions['htmlToJson'](editor);
+        json_helperFunctions['saveToLocalStorage'](uniqueID,noteVal, 'override');
+        json_static['fileId'].push(uniqueID);
+        json_static['recent'].unshift(uniqueID);
     },
     'export':async function () {
             const options = {

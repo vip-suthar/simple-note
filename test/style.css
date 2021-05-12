@@ -1,59 +1,22 @@
+*{
+  outline: none;
+}
 body{
     overflow: hidden;
   }
   #editor{
-      position: relative;
-      width: auto;
-      height: 95vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 10px;
+      width: calc(98.5% - 20px);
+      height: calc(97.2% - 20px);
       background-color: rgb(255, 255, 255);
       border-radius: 5px;
-      padding: 8px;
+      padding: 10px;
       box-shadow: 2px 2px 10px #d6d6d6;
     }
-    #editor .textarea{
-      position: relative;
-      display: block;
-      left: 50%;
-      transform: translate(-50%);
-      padding: 10px;
-      width: auto;
-      height: 95%;
-      color: rgb(112, 112, 112);
-      background-color: rgba(255, 255, 255);
-      outline: none;
-      overflow: scroll;
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-    }
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    #editor .textarea::-webkit-scrollbar{
-      display: none;
-    }
     
-    #editor .textarea:focus{
-      /* color: transparent;
-      text-shadow: 0 0 0 #000; */
-      background-color: rgba(255, 255, 255, 0.75);
-    }
-    #editor button{
-      position: relative;
-      display: block;
-      left: 50%;
-      margin-top: 5px;
-      transform: translate(-50%);
-      color: #06b640;
-      padding: 5px 8px;
-      background-color: transparent; 
-      border: 2px solid #06b640; 
-      border-radius: 5px;
-      text-transform: uppercase;
-      outline: none;
-    }
-    #editor button:hover{
-      color: #eeeeee;
-      background-color: #06b640;
-    }
-
 div#tooltip {
     position: fixed;
     background: rgba(255, 255, 255, 0.98);
